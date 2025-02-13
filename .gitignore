@@ -1,0 +1,3 @@
+__pycache__/
+*.log
+custom_components/shopping_card/*.pyc
