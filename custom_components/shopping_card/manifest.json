@@ -1,0 +1,9 @@
+{
+    "domain": "shopping_card",
+    "name": "Shopping Card",
+    "version": "1.0.0",
+    "documentation": "https://github.com/elad546/ShoppingCard.git",
+    "dependencies": [],
+    "codeowners": ["@elad546"],
+    "requirements": ["mariadb"]
+}

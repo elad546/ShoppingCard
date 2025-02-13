@@ -1,0 +1,8 @@
+{
+    "name": "Shopping List Card",
+    "content_in_root": false,
+    "filename": "ShoppingCard/shopping-list-card.js",
+    "country": "worldwide",
+    "homeassistant": "2024.12.5",
+    "render_readme": true
+  }
