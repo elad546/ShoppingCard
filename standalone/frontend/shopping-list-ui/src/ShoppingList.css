@@ -1,0 +1,80 @@
+.shopping-list-container {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .search-bar {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  .add-button {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    background-color: #45a049;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .item-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .item-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  /* Tabs Container */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Tab Buttons */
+  .tab-button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .tab-button:hover {
+    background-color: #ddd;
+  }
+  
+  .tab-button.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  /* Shopping Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+    padding: 10px;
+  }

@@ -25,28 +25,16 @@
 // export default App;
 
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import ShoppingList from "./ShoppingList";
 
 function App() {
-    const [items, setItems] = useState([]);
-
-    useEffect(() => {
-        axios.get("http://localhost:8005/api/shopping_list")
-            .then(response => setItems(response.data))
-            .catch(error => console.error("Error fetching shopping list:", error));
-    }, []);
-
-    return (
-        <div>
-            <h1>Shopping List</h1>
-            <ul>
-                {items.map((item, index) => (
-                    <li key={index}>{item.name}</li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div className="App">
+      <h1>Shopping List</h1>
+      <ShoppingList />
+    </div>
+  );
 }
 
 export default App;
