@@ -44,7 +44,7 @@
   }
 
   /* Tabs Container */
-.tabs {
+.store_tabs {
     display: flex;
     justify-content: center;
     margin-bottom: 0px;
@@ -80,7 +80,7 @@
   }
 
   .search-bar {
-    width: 100%;
+    width: 50%;
     padding: 12px;
     margin: 10px 0;
     border-radius: 8px;
@@ -95,4 +95,58 @@
     border-radius: 8px;
     margin-left: 10px;
     font-size: 12px;
+}
+
+.input {
+    width: 50%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    text-align: right;
+}
+
+.item-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust 150px as needed */
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+  direction: rtl;
+}
+
+.item-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.item-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.category-tabs button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background-color: #f0f0f0;
+}
+
+.category-tabs button.active {
+  background-color: #007bff;
+  color: white;
 }
