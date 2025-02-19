@@ -1,5 +1,5 @@
 from .database import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean, Float
 
 # class ShoppingItem(Base):
 #     __tablename__ = "fresh_market"
@@ -23,6 +23,7 @@ class BaseItem(Base):
     __abstract__ = True  # This makes sure SQLAlchemy doesn't create a table for this class
     barcode = Column(String, primary_key=True, unique=True, index=True)
     name = Column(String, nullable=False)
+    is_used = Column(Boolean, nullable=False, default=True)
 
 class FreshMarketItem(BaseItem):
     __tablename__ = "fresh_market"

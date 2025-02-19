@@ -1,64 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { fetchItems } from "./api";
 import "./ShoppingList.css";
 
-const categories = ["All", "Fruits", "Vegetables", "Dairy", "Snacks"];
-
-const demoItems = [
-  { name: "Apple", category: "Fruits", image: "https://via.placeholder.com/80" },
-  { name: "Banana", category: "Fruits", image: "https://via.placeholder.com/80" },
-  { name: "Carrot", category: "Vegetables", image: "https://via.placeholder.com/80" },
-  { name: "Milk", category: "Dairy", image: "https://via.placeholder.com/80" },
-  { name: "Chips", category: "Snacks", image: "https://via.placeholder.com/80" },
-];
+const stores = ["fresh_market", "osher_ad", "shufersal"];
+const PAGE_SIZE = 50;
 
 const ShoppingList = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
+    const [selectedStore, setSelectedStore] = useState(stores[0]);
+    const [items, setItems] = useState([]);
+    const [page, setPage] = useState(1);
+    const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredItems = demoItems.filter((item) =>
-    (selectedCategory === "All" || item.category === selectedCategory) &&
-    item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+    useEffect(() => {
+        const loadItems = async () => {
+            const data = await fetchItems(selectedStore, page, PAGE_SIZE, searchQuery);
+            setItems(data);
+        };
+        loadItems();
+    }, [selectedStore, page, searchQuery]);
 
-  return (
-    <div className="shopping-list-container">
-      {/* Tabs for categories */}
-      <div className="tabs">
-        {categories.map((category) => (
-          <button
-            key={category}
-            className={`tab-button ${selectedCategory === category ? "active" : ""}`}
-            onClick={() => setSelectedCategory(category)}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+        setPage(1);
+    };
 
-      {/* Search Bar */}
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search items..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      {/* Shopping Grid */}
-      <div className="grid">
-        {filteredItems.length > 0 ? (
-          filteredItems.map((item, index) => (
-            <div key={index} className="item-card">
-              <img src={item.image} alt={item.name} />
-              <p>{item.name}</p>
+    return (
+        <div className="shopping-list">
+            <h2>Shopping List</h2>
+            <div className="tabs">
+                {stores.map(store => (
+                    <button key={store} className={selectedStore === store ? "active" : ""} onClick={() => { setSelectedStore(store); setPage(1); }}>
+                        {store.replace("_", " ").toUpperCase()}
+                    </button>
+                ))}
             </div>
-          ))
-        ) : (
-          <p>No items found.</p>
-        )}
-      </div>
-    </div>
-  );
+
+            <input
+                type="text"
+                placeholder="Search by barcode or name..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="search-bar"
+            />
+
+            <ul>
+                {items.map(item => (
+                    <li key={item.barcode}>
+                        <img src={item.image} alt={item.name} />
+                        <span>{item.name}</span>
+                        {item.is_used ? <span className="used-tag">Used</span> : null}
+                    </li>
+                ))}
+            </ul>
+
+            <div className="pagination">
+                <button disabled={page === 1} onClick={() => setPage(page - 1)}>Previous</button>
+                <span>Page {page}</span>
+                <button disabled={items.length < PAGE_SIZE} onClick={() => setPage(page + 1)}>Next</button>
+            </div>
+        </div>
+    );
 };
 
 export default ShoppingList;

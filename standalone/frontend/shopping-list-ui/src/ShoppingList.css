@@ -4,12 +4,12 @@
     text-align: center;
   }
   
-  .search-bar {
+  /* .search-bar {
     width: 90%;
     padding: 10px;
     margin-bottom: 10px;
     font-size: 16px;
-  }
+  } */
   
   .add-button {
     padding: 10px;
@@ -47,7 +47,7 @@
 .tabs {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
   
   /* Tab Buttons */
@@ -78,3 +78,21 @@
     gap: 10px;
     padding: 10px;
   }
+
+  .search-bar {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.used-tag {
+    background-color: #4caf50;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    margin-left: 10px;
+    font-size: 12px;
+}
