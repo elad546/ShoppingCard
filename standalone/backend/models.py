@@ -1,29 +1,11 @@
 from .database import Base
-from sqlalchemy import Column, Integer, String, Boolean, Float
-
-# class ShoppingItem(Base):
-#     __tablename__ = "fresh_market"
-
-#     barcode = Column(Integer, primary_key=True, unique=True, index=True)
-#     name = Column(String(255))
-#     # category = Column(String(255))
-#     # image_url = Column(String(255))
-
-
-# class FreshMarketItem(Base):
-#     __tablename__ = "fresh_market"  # Your table name
-
-#     barcode = Column(String, primary_key=True, unique=True, index=True)
-#     name = Column(String, nullable=False)
-    # category = Column(String, nullable=False)
-    # image = Column(String, nullable=True)
-    # price = Column(Float, nullable=True)  # Optional price column
+from sqlalchemy import Column, String, BigInteger, Boolean
 
 class BaseItem(Base):
     __abstract__ = True  # This makes sure SQLAlchemy doesn't create a table for this class
-    barcode = Column(String, primary_key=True, unique=True, index=True)
+    barcode = Column(BigInteger, primary_key=True, unique=True, index=True)
     name = Column(String, nullable=False)
-    is_used = Column(Boolean, nullable=False, default=True)
+    is_used = Column(Boolean, nullable=False)
 
 class FreshMarketItem(BaseItem):
     __tablename__ = "fresh_market"
